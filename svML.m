@@ -8,7 +8,7 @@ close all;
 %% ============================================================
 Nt = 16; 
 Nr = 8;
-Num_sim = 5; % Number of channel realizations per configuration
+Num_sim = 50; % Number of channel realizations per configuration
 target_nmse_db = -15;
 
 % Parameter Grid for SV Model
@@ -168,7 +168,7 @@ end
 figure('Name', 'Dominating Factors Analysis', 'Position', [100 100 1000 400], 'Color', 'w');
 
 % Plot 1: Feature Importance Bar Chart
-subplot(1,2,1);
+subplot(1,1,1);
 bar_handle = bar(sorted_importance, 'FaceColor', [0 0.447 0.741]);
 set(gca, 'XTickLabel', sorted_names, 'XTickLabelRotation', 45);
 ylabel('Absolute Standardized Weight');
@@ -176,21 +176,21 @@ title('Dominating Factors on Pilot Ratio');
 grid on;
 
 % Plot 2: Scatter plot of the Most Dominant Factor vs Pilot Ratio
-subplot(1,2,2);
-if sort_idx(1) == 1, dom_data = all_C;
-elseif sort_idx(1) == 2, dom_data = all_spread;
-elseif sort_idx(1) == 3, dom_data = all_erank;
-else, dom_data = all_mu;
-end
+%subplot(1,2,2);
+%if sort_idx(1) == 1, dom_data = all_C;
+%el%seif sort_idx(1) == 2, dom_data = all_spread;
+e%lseif sort_idx(1) == 3, dom_data = all_erank;
+%else, dom_data = all_mu;
+%end
 
-scatter(dom_data, all_pilot_ratio, 60, all_pilot_ratio, 'filled');
-colormap('parula');
-cb = colorbar;
-cb.Label.String = 'Required Pilot Ratio';
-xlabel(sorted_names{1});
-ylabel('Required Pilot Ratio');
-title(sprintf('Top Factor: %s vs. Pilot Ratio', sorted_names{1}));
-grid on;
+%scatter(dom_data, all_pilot_ratio, 60, all_pilot_ratio, 'filled');
+%colormap('parula');
+%cb = colorbar;
+%cb.Label.String = 'Required Pilot Ratio';
+%xlabel(sorted_names{1});
+%ylabel('Required Pilot Ratio');
+%title(sprintf('Top Factor: %s vs. Pilot Ratio', sorted_names{1}));
+%grid on;
 
 %% ============================================================
 % Functions
